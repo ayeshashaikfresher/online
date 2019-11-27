@@ -1,0 +1,53 @@
+{% include 'title.html' %}
+<br><br>
+{% include 'header.html' %}
+<br><br>
+{% include 'adminleftpanel.html' %}
+ <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div class="select2-container" style="align-content: center; margin-top:-150px;">
+<form action='{% url 'saveMerchant' %}' method="POST"  style="margin-left:450px">
+    {% csrf_token %}
+  <fieldset>
+    <div id="legend">
+      <h4 class="">Marchant Registration</h4>
+    </div>
+    <div class="control-group">
+      <!-- Username -->
+      <label class="control-label"  for="username">Username</label>
+      <div class="controls">
+        <input type="text" id="username" name="username" placeholder="" class="input-xlarge" required>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- E-mail -->
+      <label class="control-label" for="email">E-mail</label>
+      <div class="controls">
+        <input type="email" id="email" name="email" placeholder="" class="input-xlarge" required>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- Password-->
+      <label class="control-label" for="password">Contact</label>
+      <div class="controls">
+        <input type="number" id="contact" name="contact" placeholder="" class="input-xlarge">
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <button class="btn btn-success" type="submit" style="margin-left:110px;">Save</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+</div>
+
+{% if msg %}
+    <h2 style="color: green">{{ msg }}</h2>
+{% endif %}

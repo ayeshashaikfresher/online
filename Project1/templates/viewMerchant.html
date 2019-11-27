@@ -1,0 +1,39 @@
+{% include 'title.html' %}
+<br><br>
+{% include 'header.html' %}
+<br><br>
+{% include 'adminleftpanel.html' %}
+
+
+<div class="">
+
+{% if data %}
+    <table border="1" align="center" style="margin-left:450px; margin-top: -90px;">
+    <tr>
+        <th>IDNO</th>
+        <th>NAME</th>
+        <th>CONTACT NO</th>
+        <th>EMAIL</th>
+        <th>DELETE</th>
+    </tr>
+    {% for x in data %}
+    <tr>
+        <td>{{ x.idno }}</td>
+        <td>{{ x.name }}</td>
+        <td>{{ x.contact }}</td>
+        <td>{{ x.email }}</td>
+        <td><button type="submit"><a href="{% url 'deletemerchant' %}?idno={{ x.idno }}" >Yes</a></button> </td>
+    </tr>
+    {% endfor %}
+    </table>
+{% endif %}
+
+{% if delete %}
+    <h2 style="color: red; margin-left: 450px;">{{ delete }}</h2>
+{% endif %}
+</div>
+
+
+{% if msg %}
+    <h2 style="color: green">{{ msg }}</h2>
+{% endif %}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.vertical-menu {
+  width: 200px;
+    margin-left:150px;
+    margin-top: -50px;
+}
+.vertical-menu a {
+  background-color: #eee;
+  color: green;
+  display: block;
+  padding: 14px;
+  text-decoration: none;
+}
+.vertical-menu a:hover {
+  background-color: #ccc;
+}
+.vertical-menu a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<div class="vertical-menu">
+  <a href="{% url 'addmerchant' %}">Add Merchant</a>
+  <a href="{% url 'viewmerchant' %}">View Merchant</a>
+  <a href="{% url 'deletemerchant' %}">Delete Merchant</a>
+  <a href="{% url 'logout' %}">Logout</a>
+  </div>
+
+
+
+
+</body>
+</html>

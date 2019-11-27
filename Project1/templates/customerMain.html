@@ -1,0 +1,45 @@
+{% include "title.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron text-center" style="height:50px;margin-top: 10px; width: 500px; margin-left: 400px; background-color:lightcoral">
+  <h2 style="margin-top: -20px;">Customer Application</h2>
+</div>
+
+<div class="container">
+  <div class="row" style="margin-left: 400px;">
+      <button type="button" class="btn btn-primary" style="width: 130px;"><a href="{% url 'cust_login' %}">Login</a></button>
+  <button type="button" class="btn btn-success" style="width: 150px;"><a href="{% url 'cust_reg' %}"> Register </a></button>
+  </div>
+</div>
+<br><br>
+{% if data %}
+    <table align="center" border="2" style="margin-left:400px;">
+    <tr>
+        <th width="150px;" height="30px;">Product Id</th>
+        <th width="150px;" height="30px;">Product Name</th>
+        <th width="150px;" height="30px;">Product Price</th>
+    </tr>
+        {% for x in data %}
+    <tr>
+        <td>{{ x.pro_no }}</td>
+        <td>{{ x.name }}</td>
+        <td>{{ x.price }}</td>
+    </tr>
+    {%  endfor %}
+    </table>
+{% endif %}
+
+
+</body>
+</html>

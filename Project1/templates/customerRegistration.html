@@ -1,0 +1,116 @@
+{% include "title.html" %}
+<br><br>
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    {% if msg %}
+        <h2 style="color: green">{{ msg }}</h2>
+    {% endif %}
+<head>
+	<meta charset="utf-8">
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/sourcesanspro-font.css'%}">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+
+<body class="form-v8">
+	<div class="page-content" style="height:720px;">
+		<div class="form-v8-content" style="height:720px;">
+			<div class="form-left" style="margin-top:100px; ">
+				<img src="{% static 'images/img.png' %}" alt="form">
+			</div>
+			<div class="form-right">
+				<div class="tab">
+					<div class="tab-inner">
+						<button class="tablinks" onclick="openCity(event, 'sign-up')" id="defaultOpen">Sign Up</button>
+					</div>
+					{% comment %}<div class="tab-inner">
+						<button class="tablinks" onclick="openCity(event, 'sign-in')">Sign In</button>
+					</div>{% endcomment %}
+				</div>
+				<form class="form-detail" action="{% url 'saveCustomer' %}" method="post">
+                    {% csrf_token %}
+					<div class="tabcontent" id="sign-up">
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input type="text" name="full_name" id="full_name" class="input-text" required>
+								<span class="label">Username</span>
+		  						<span class="border"></span>
+							</label>
+						</div>
+                        <div class="form-row">
+							<label class="form-row-inner">
+								<input type="number" name="contact" id="contact" class="input-text" required>
+								<span class="label">Contact No</span>
+		  						<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input type="text" name="your_email" id="your_email" class="input-text" required>
+								<span class="label">E-Mail</span>
+		  						<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input type="password" name="password" id="password" class="input-text" required>
+								<span class="label">Password</span>
+								<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row">
+							<label class="form-row-inner">
+								{% comment %}<input type="password" name="comfirm_password" id="comfirm_password" class="input-text" required>{% endcomment %}
+								<textarea type="text" name="address" id="address" class="input-text" required cols="65" rows="5"></textarea>
+                                <span class="label">Address</span>
+                              	<span class="border"></span>
+							</label>
+						</div>
+                        <br><br>
+                        	<div class="form-row">
+							<label class="form-row-inner">
+                                <select name="status" id="status" class="input-text" style="width:550px; height:30px;">
+                                    <option value="">Select</option>
+                                    <option value="active">Active</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="cancel">Cancel</option>
+                                </select>
+								{% comment %}<input type="password" name="comfirm_password" id="comfirm_password" class="input-text" required>{% endcomment %}
+								<span class="label">Status</span>
+                                <span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row-last">
+							<input type="submit" name="register" class="register" value="Register" style="margin-left: 150px;">
+						</div>
+					</div>
+				</form>
+            </div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		function openCity(evt, cityName) {
+		    var i, tabcontent, tablinks;
+		    tabcontent = document.getElementsByClassName("tabcontent");
+		    for (i = 0; i < tabcontent.length; i++) {
+		        tabcontent[i].style.display = "none";
+		    }
+		    tablinks = document.getElementsByClassName("tablinks");
+		    for (i = 0; i < tablinks.length; i++) {
+		        tablinks[i].className = tablinks[i].className.replace(" active", "");
+		    }
+		    document.getElementById(cityName).style.display = "block";
+		    evt.currentTarget.className += " active";
+		}
+
+		// Get the element with id="defaultOpen" and click on it
+		document.getElementById("defaultOpen").click();
+	</script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
